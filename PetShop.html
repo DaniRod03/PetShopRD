@@ -10,29 +10,100 @@
 
 <body>
     <script>
-        console.log("************ PETSHOP RD *************")
+        const EMPRESA = "*************PET SHOP RD*************"
+        console.log(EMPRESA)
         /* nome, idade, raça, peso, cor, dono, vacinado, serviços */
-        var dog = {
-            nome: "Melissa",
-            idade: 5,
-            raca: "Shih tzu",
-            peso: 8.75,
-            cor: "branco",
-            dono: "Isabella Rodrigues de Araujo",
-            vacinado: null,
-            servicos: ["Banho", "vacinação"],
-        }
-        function vacinar(dog) {
-            if (dog.vacinado) {
-                console.log("Cachorro é vacinado")
+        let pets = [{
+                nome: "Melissa",
+                idade: 5,
+                raca: "Shih Tzu",
+                tipo: "Cachorro",
+                peso: 8.75,
+                cor: "Branco",
+                dono: "Isabella Rodrigues de Araujo",
+                vacinado: false,
+                servicos: ["Banho", "Tosa"],
+            },
+            {
+                nome: "Slash",
+                idade: 8,
+                raca: "Siames",
+                tipo: "Gato",
+                peso: 5,
+                cor: "Branco",
+                dono: "Daniel",
+                vacinado: false,
+                servicos: ["Banho"],
+            },
+            {
+                nome: "Mia",
+                idade: 5,
+                raca: "Siames",
+                tipo: "Gato",
+                peso: 6,
+                cor: "Branco",
+                dono: "Daniel",
+                vacinado: false,
+                servicos: ["Banho"],
             }
-            else {
-                dog.vacinado = true;
-                console.log("Dog vacinado")
-            }
+        ]
+        const vacinarPet = pet => {
+            console.log(pet.vacinado ? "Pet ja esta vacinado" : "Pet foi vacinado");
 
         }
+
+        const adicionarPet = (nome, idade, raca, tipo, peso, cor, vacinado, servicos) => {
+            const petNovo = {
+                nome,
+                idade,
+                raca,
+                tipo,
+                peso,
+                cor,
+                dono: {
+                    nome,
+                    idade,
+                },
+                vacinado,
+                servicos,
+            }
+            pets.push(petNovo);
+            console.log("Novo pet adicionado");
+        }
+
+        const visualizarPet = () => {
+
+            pets.forEach((valor, index) => {
+                console.log("------------------------------")
+                console.log("Nome do pet: " + valor.nome);
+                console.log("Tipo do pet: " + valor.tipo);
+                console.log(valor.vacinado ? "Esse pet ja foi vacinado" :
+                "Esse pet ainda nao foi vacinado");
+
+            })
+        }
+        // let petsTipoGato = [];
+        // pets.forEach((pet, index) => { 
+        //     if(pet.tipo == "Gato"){
+        //         petsTipoGato.push(pet);
+        //     }
+        // });
+        //a mesma coisa que for.each
+        const filtrarPetsGatos = () => {
+            let listaPetGatos = pets.filter(function(pet, index) {
+                return pet.tipo == "Gato"
+            })
+            return listaPetGatos;
+        };
+        const vacinarOsPets = () => {
+       pets.map(function(pet, index){
+            return pet.vacinado = true;
+            //vacinarPet(pet); 
+       }
+      )
+    return pets;
+}
     </script>
 </body>
 
-</html>
+</html> 
